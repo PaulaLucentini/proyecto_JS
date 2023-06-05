@@ -102,6 +102,23 @@ if (funcion === "estrenos") {
   }
 
   
+//EVENTOS
+
+
+  let formulario = document.getElementById("formulario");
+
+formulario.addEventListener("submit", (e) => {
+  e.preventDefault();
+  
+  let inputs = e.target.children;
+  // console.log(inputs[0].value);
+  // console.log(inputs[1].value);
+
+  if(!inputs[0].value.includes("@")){
+    inputs[0].value = "";
+  }
+});
+
 
 
 
