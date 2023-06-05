@@ -1,0 +1,40 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+h1{
+    margin-left: 200px;
+    margin-top: 50px;
+
+}
+.button{
+    background-color: black;
+    color: hwb(60 33% 9%) ;
+    border-radius: 10px;
+    border: 2px solid black;
+    width: 300px;
+    height: 70px;
+    font-size: larger;
+    font-weight: bold;
+    margin-left: 400px;
+    
+}
+body{
+    background-color: hwb(60 33% 9%);
+}
+
+.rojo{
+    background-color: red;
+  }
+  
+  .azul{
+    background-color: blue;
+  }
+  
+  .verde{
+    background-color: green;
+  }
+  
+  .amarillo{
+    background-color: yellow;
+  }
