@@ -1,28 +1,8 @@
 
-//primer entrega sin corregir
-/*function saludar(){
-    let nombre= prompt("Ingrese su nombre");
-    let mensaje= `Hola ${nombre}`;
-    alert (mensaje);
-}
+//primer entrega
 
-
-saludar();
-let edad = Number (prompt("Ingrese du edad"));
-
-if (edad>=18){
-    for(let butaca=1; butaca<=5; butaca++){
-        let dni = Number(prompt("Ingrese su DNI"));
-        alert(`Butaca #${butaca} DNI ${dni}`);
-        }
-    alert("Entradas Agotadas");
-}else{
-    alert("Debe ser mayor de edad");
-}*/
-
-//primer entrega corregida
 for (let butaca = 1; butaca <= 1; butaca++) {
-    let edad = Number(prompt("Ingrese du edad"));
+    let edad = Number(prompt("Ingrese su edad"));
     let nombre = prompt("Ingrese su nombre");
     let mensaje = `Hola ${nombre}`;
     alert(mensaje);
@@ -40,20 +20,24 @@ for (let butaca = 1; butaca <= 1; butaca++) {
 
 //OBJETO
 const obras = [
-    {id: 1, nombre: "La divina comedia", fecha: "22-08-2023"},
-    {id: 2, nombre: "Romeo y Julieta", fecha: "22-09-2023"},
-    {id: 3, nombre: "La casa de Bernarda Alba", fecha: "22-10-2023"},
-    {id: 4, nombre: "La Clestina", fecha: "22-11-2023"},
+  {id: 1, nombre:"Romeo y Julieta", precio: 500},
+  {id: 2, nombre:"La divina Comedia", precio: 500},
+  {id: 3, nombre:"La casa de Bernarda Alba", precio: 500},
+  {id: 4, nombre:"La Celestina", precio: 500},
+  {id: 5, nombre:"El fantasma de la ópera", precio: 1000},
+  {id: 6, nombre:"Sueño de una noche de verano", precio:1000},
+  {id: 7, nombre:"Don Juan Tenorio", precio:1000},
 ];
 
 class ObrasNuevas {
-    constructor(nombre, fecha){
+    constructor(id, nombre, precio){
+        this.id= id;
         this.nombre= nombre;
-        this.fecha= fecha;
+        this.precio= precio;
     }
 };
 
-const obra1= new ObrasNuevas("Hamlet", "22-12-2023");
+const obra1= new ObrasNuevas(8, "Hamlet", 500);
 
 obras.push (obra1);
 
@@ -83,8 +67,6 @@ obrasClasicas.forEach(item =>{
 });
 
 
-
-
   //TERCER ENTREGA - DOM
 
 let saludo = document.getElementById("saludo");
@@ -100,24 +82,112 @@ if (funcion === "estrenos") {
     saludo.innerHTML = "<h1>Bienvenidos a nuestro TEATRO</h1>";
     saludo.className = "verde";
   }
-
   
+//crear nodo
+
+let contendor= document.getElementById("contenedor");
+
+let parrafo = document.createElement("p");
+parrafo.innerHTML = "<H3 class=font>El teatro para mi representa al otro, es el diálogo y es la ausencia del odio.</h3>";
+contendor.append(parrafo);
+
+//mostrar arreglo
+
+let contenedorUl = document.getElementById("contenedorUl");
+obras.forEach(item =>{
+  let div = document.createElement("div");
+  div.innerHTML= `
+  <h2>ID: ${item.id}</h2>
+  <p>Nombre: ${item.nombre}</p>
+  <b>$: ${item.precio}</b>
+  <hr/>
+  `;
+  contenedorUl.append(div);
+});
+
 //EVENTOS
 
+let boton = document.getElementById("boton");
+const respuesta = () => {
+  console.log("click");
+};
+boton.addEventListener("click", respuesta);
 
-  let formulario = document.getElementById("formulario");
+boton.addEventListener("mouseover", () => {
+  saludo.className= "rojo";
+});
+
+boton.addEventListener("mouseout", () => {
+  saludo.className= "amarillo";
+});
+
+boton.addEventListener("mousedown", () => {
+  saludo.className= "verde";
+});
+
+boton.addEventListener("click", () => {
+  saludo.className = "azul";
+});
+
+let formulario = document.getElementById("formulario");
 
 formulario.addEventListener("submit", (e) => {
   e.preventDefault();
   
   let inputs = e.target.children;
-  // console.log(inputs[0].value);
-  // console.log(inputs[1].value);
 
   if(!inputs[0].value.includes("@")){
     inputs[0].value = "";
   }
 });
+
+//STORAGE-JSON
+
+const productos = [
+  {id: 1, nombre: "obraUno", precio: 1000},
+  {id: 2, nombre: "obraDos", precio: 500},
+  {id: 3, nombre: "obraTres", precio: 300},
+  {id: 4, nombre: "obraCuatro", precio: 200},
+];
+localStorage.setItem("carrito", JSON.stringify(productos));
+
+let botonEliminar = document.getElementById("eliminar");
+
+let carrito = [];
+let carritoStorage = localStorage.getItem("carrito");
+
+if (carritoStorage) {
+  carrito = JSON.parse(carritoStorage);
+} else {
+  let div = document.createElement("div");
+  div.innerHTML = "El carrito está vacío";
+  document.body.append(div);
+}
+
+carrito.forEach((item) => {
+  let div = document.createElement("div");
+  div.innerHTML = `
+    <h2>Id: ${item.id}</h2>
+    <p>Nombre: ${item.nombre}</p>
+    <b>$${item.precio}</b>
+    <hr />
+  `;
+  document.body.append(div);
+});
+
+botonEliminar.addEventListener("click", () => {
+  localStorage.clear();
+  alert("carrito eliminado");
+  location.reload();
+});
+
+//OPERADORES AVANZADOS
+
+const carritoAvanzado = [ ];
+carritoAvanzado.length === 0 && console.log("El carrito está vacío");
+
+
+const carritoCargado = JSON.parse(localStorage.getItem("carritoCargado")) || [];
 
 
 

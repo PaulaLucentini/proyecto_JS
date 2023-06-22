@@ -10,16 +10,42 @@
 <body>
     <h1>TEATRO</h1>
     <form>
-        <button class="button" onclick= "algoritmo()"; >Reservar Entrada</button>
+        <button class="button" id="boton">Click</button>
     </form>
     <div id="saludo">BIENVENIDOS AL TEATRO</div>
+    <div class="clasicos">
+        <h2>Obras Clásicas</h2>
+        <ul>
+            <li>Romeo y Julieta</li>
+            <li>La divina comedia</li>
+            <li>La casa de Bernarda Alba</li>
+            <li>La Celestina</li>
+        </ul>
+    </div>
+    <div class="estrenos">
+        <h2>Estrenos</h2>
+        <ul>
+            <li>El fantasma de la ópera</li>
+            <li>Sueño de una noche de verano</li>
+            <li>Don Juan Tenorio</li>
+        </ul>
+    </div>
+
+    <div id="contenedor"></div>
+    <div>
+        <ul id="contenedorUl"></ul>
+    </div>
+    
 
     <form id="formulario">
         <input type="text">
         <input type="number">
         <input type="submit" value="Enviar">
-      </form>
-      
+    </form>
+
+    <button id="eliminar">Eliminar Carrito</button>
+
+
     <script src="./main.js"></script>
 </body>
 </html>

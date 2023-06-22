@@ -38,3 +38,25 @@ body{
   .amarillo{
     background-color: yellow;
   }
+
+  .clasicos{
+    background-color: lightyellow;
+    margin: 30px;
+    width: 300px;
+  }
+
+  .estrenos{
+    background-color: lightgreen;
+    margin: 30px;
+    width: 300px;
+  }
+  .font{
+    font-weight: bold;
+    font-style: italic;
+    color: blueviolet;
+  }
+
+  .clase{
+    background-color: blueviolet;
+  }
+  
